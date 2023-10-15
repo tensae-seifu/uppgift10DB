@@ -15,7 +15,7 @@ namespace uppgift1
         private string _class;
         private string _gender;
 
-        public int Id { get { return _id; } set { _id = value; } }
+        public int Id { get { return _id; } }
         public string Name { get { return _name; } set { _name = value; } }
         public int Age { get { return _age; } set { _age = value; } }
         public string Class { get { return _class;} set { _class = value; } }
