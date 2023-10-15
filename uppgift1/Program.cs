@@ -36,6 +36,10 @@ namespace uppgift1
             // Insert the Student object into the database
            Action.AddStudentToDB(newStudent, conn._Conn);
 
+            
+
+            Action.GetStudentsFromDB(newStudent, conn._Conn);
+
             // Close the connection
             conn._Conn.Close();
         }

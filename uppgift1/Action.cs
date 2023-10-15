@@ -51,11 +51,43 @@ namespace uppgift1
         public static void GetStudentsFromDB(Student student, SqlConnection connection)
         {
             {
+
+                //DbCOnnect conn = new DbCOnnect(new SqlConnection());
+
+                //// Call the Connect method to establish the database connection
+                //conn.Connect();
+                // Pass the connection to the SqlCommand
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Students  ", connection);
+
+                // SQL internal object that reads data from a table is called a SqlDataReader
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    Console.WriteLine("\t\t\t{0}\t{1}\t{2}\t{3}\t\t{4}", "Student ID", "Student Name", "Student Age", "Student Class","Student Gender");
+
+                    while (reader.Read())
+                    {
+
+
+                        Console.WriteLine("\t\t\t{0}\t\t{1}\t\t{2}\t\t{3}\t\t\t{4}", reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(4));
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows");
+                }
+
+                reader.Close();
+
+                //  close the connection when  done.
+                connection.Close();
             }
+        }
         }
 
     }
-}
+
     
 
 
