@@ -52,10 +52,7 @@ namespace uppgift1
         {
             {
 
-                //DbCOnnect conn = new DbCOnnect(new SqlConnection());
-
-                //// Call the Connect method to establish the database connection
-                //conn.Connect();
+               
                 // Pass the connection to the SqlCommand
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Students  ", connection);
 
