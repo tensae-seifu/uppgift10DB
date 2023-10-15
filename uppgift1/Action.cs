@@ -16,8 +16,8 @@ namespace uppgift1
         {
             {
                 // Insert data into the Students table
-                Console.WriteLine("\nInserting data into the Students table.");
-                Console.WriteLine("===========================\n\n");
+                Console.WriteLine("\n\t\t\tInserting data into the Students table.");
+                Console.WriteLine("\t\t\t=========================================\n\n");
 
                 SqlCommand insertStudentCmd = new SqlCommand("INSERT INTO Students (StudentName, Age, Class, Gender) VALUES (@studentName, @studentAge, @studentClass, @studentGender)", connection);
 
@@ -30,11 +30,11 @@ namespace uppgift1
 
                 if (rowsAffected > 0)
                 {
-                    Console.WriteLine("Data inserted into the Students table.");
+                    Console.WriteLine("\t\t\tData inserted into the Students table.\n");
                 }
                 else
                 {
-                    Console.WriteLine("Failed to insert data into the Students table.");
+                    Console.WriteLine("\t\t\tFailed to insert data into the Students table.");
                 }
             }
         }
@@ -43,12 +43,56 @@ namespace uppgift1
             {
             }
         }
-        public static void DeleteStudentToDB(Student student, SqlConnection connection)
+        public static void DeleteStudentFromDB(/*Student student,*/ SqlConnection connection)
         {
             {
+             
+
+                // Update data in the CUSTOMER table
+                Console.WriteLine("Deleteing data from Students table...");
+
+                int StudentId;
+
+
+
+
+                Console.WriteLine("Enter Student ID to Delete: ");
+                StudentId = Convert.ToInt32(Console.ReadLine());
+
+
+                connection.Open();
+
+                //Deleting data from the students Table
+                SqlCommand deleteStudentCmd = new SqlCommand("DELETE FROM Students WHERE StudentID = @studentId", connection);
+                deleteStudentCmd.Parameters.AddWithValue("@studentId", StudentId);
+
+
+
+                
+
+
+                int rowsAffectedStudents = deleteStudentCmd.ExecuteNonQuery();
+              
+
+                if (rowsAffectedStudents > 0 )
+                {
+                    Console.WriteLine("Data Deleted from the DB.");
+                }
+                else
+                {
+                    Console.WriteLine("No records updated in CUSTOMER table.");
+                }
+
+
+
+
+
+                // Close the connection
+                //  close the connection when  done.
+                connection.Close();
             }
         }
-        public static void GetStudentsFromDB(Student student, SqlConnection connection)
+        public static void GetStudentsFromDB(/*Student student,*/ SqlConnection connection)
         {
             {
 
@@ -61,9 +105,12 @@ namespace uppgift1
 
                 if (reader.HasRows)
                 {
-                    Console.WriteLine("\t\t\t{0}\t{1}\t{2}\t{3}\t\t{4}", "Student ID", "Student Name", "Student Age", "Student Class","Student Gender");
+                    Console.WriteLine("\t\t\t{0}\t{1}\t{2}\t{3}\t\t{4}", "Student ID", "Student Name", "Student Age", "Student Class", "Student Gender");
+                    Console.WriteLine("\t\t\t{0}\t{1}\t{2}\t{3}\t\t{4}", "==========", "============", "===========", "=============", "==============");
+            
 
                     while (reader.Read())
+
                     {
 
 
@@ -81,6 +128,7 @@ namespace uppgift1
                 connection.Close();
             }
         }
+
         }
 
     }

@@ -38,7 +38,10 @@ namespace uppgift1
 
             
 
-            Action.GetStudentsFromDB(newStudent, conn._Conn);
+            Action.GetStudentsFromDB(/*newStudent,*/ conn._Conn);
+
+
+            Action.DeleteStudentFromDB(/*newStudent,*/ conn._Conn);
 
             // Close the connection
             conn._Conn.Close();
