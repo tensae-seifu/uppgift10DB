@@ -43,7 +43,7 @@ namespace uppgift1
             {
             }
         }
-        public static void DeleteStudentFromDB(/*Student student,*/ SqlConnection connection)
+        public static void DeleteStudentFromDB(SqlConnection connection)
         {
             {
              
@@ -92,7 +92,7 @@ namespace uppgift1
                 connection.Close();
             }
         }
-        public static void GetStudentsFromDB(/*Student student,*/ SqlConnection connection)
+        public static void GetStudentsFromDB(SqlConnection connection)
         {
             {
 
