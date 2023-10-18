@@ -15,6 +15,7 @@ namespace uppgift1
             char choice;
           
 
+<<<<<<< HEAD
             Console.WriteLine($"\t\t WELCOME TO CHAS ACADEMY\n");
 
 
@@ -87,6 +88,35 @@ namespace uppgift1
 
           
 
+=======
+            // Call the Connect method to establish the database connection
+            conn.Connect();
+
+            // Create a new Student object
+            Student newStudent = new Student(0, "", 0, "", "");
+
+            Console.WriteLine("Enter Student Name: ");
+            newStudent.Name = Console.ReadLine();
+
+            Console.WriteLine("Enter Student Age: ");
+            newStudent.Age = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Student Class: ");
+            newStudent.Class = Console.ReadLine();
+
+            Console.WriteLine("Enter Student Gender: ");
+            newStudent.Gender = Console.ReadLine();
+
+            // Insert the Student object into the database
+           Action.AddStudentToDB(newStudent, conn._Conn);
+
+            
+
+            Action.GetStudentsFromDB(conn._Conn);
+
+
+            Action.DeleteStudentFromDB( conn._Conn);
+>>>>>>> 4c5475ad6df7381825cda1d62e45652f7399eca4
 
         }
     }

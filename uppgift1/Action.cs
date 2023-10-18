@@ -44,9 +44,14 @@ namespace uppgift1
             
             
             }
+<<<<<<< HEAD
     
     }
         public static void DeleteStudentFromDB( SqlConnection connection)
+=======
+        }
+        public static void DeleteStudentFromDB(SqlConnection connection)
+>>>>>>> 4c5475ad6df7381825cda1d62e45652f7399eca4
         {
             {
              
@@ -95,7 +100,11 @@ namespace uppgift1
                 connection.Close();
             }
         }
+<<<<<<< HEAD
         public static void GetStudentsFromDB( SqlConnection connection)
+=======
+        public static void GetStudentsFromDB(SqlConnection connection)
+>>>>>>> 4c5475ad6df7381825cda1d62e45652f7399eca4
         {
             {
 
