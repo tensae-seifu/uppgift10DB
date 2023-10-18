@@ -12,39 +12,82 @@ namespace uppgift1
     {
         static void Main(string[] args)
         {
-            // Create an instance of the DbConnect class to establish a database connection
-            DbCOnnect conn = new DbCOnnect(new SqlConnection());
+            char choice;
+          
 
-            // Call the Connect method to establish the database connection
-            conn.Connect();
-
-            // Create a new Student object
-            Student newStudent = new Student(0, "", 0, "", "");
-
-            Console.WriteLine("Enter Student Name: ");
-            newStudent.Name = Console.ReadLine();
-
-            Console.WriteLine("Enter Student Age: ");
-            newStudent.Age = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Enter Student Class: ");
-            newStudent.Class = Console.ReadLine();
-
-            Console.WriteLine("Enter Student Gender: ");
-            newStudent.Gender = Console.ReadLine();
-
-            // Insert the Student object into the database
-           Action.AddStudentToDB(newStudent, conn._Conn);
-
-            
-
-            Action.GetStudentsFromDB(/*newStudent,*/ conn._Conn);
+            Console.WriteLine($"\t\t WELCOME TO CHAS ACADEMY\n");
 
 
-            Action.DeleteStudentFromDB(/*newStudent,*/ conn._Conn);
+     do {
 
-            // Close the connection
-            conn._Conn.Close();
+            Console.WriteLine($"\t\t Press {"V"} to view list of students - Press {"+"} to add student - Press {"-"} to delete student");
+            choice=Convert.ToChar( Console.ReadLine() );
+               
+                
+                
+                DbCOnnect conn = new DbCOnnect(new SqlConnection());
+                conn.Connect();
+              
+                switch (choice )
+            {
+
+
+                case '+':
+
+                     
+                
+
+                    // Create a new Student object
+                    Student newStudent = new Student(0, "", 0, "", "");
+
+                    Console.WriteLine("Enter Student Name: ");
+                    newStudent.Name = Console.ReadLine();
+
+                    Console.WriteLine("Enter Student Age: ");
+                    newStudent.Age = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Enter Student Class: ");
+                    newStudent.Class = Console.ReadLine();
+
+                    Console.WriteLine("Enter Student Gender: ");
+                    newStudent.Gender = Console.ReadLine();
+
+
+                    // Insert the Student object into the database
+                    Action.AddStudentToDB(newStudent, conn._Conn);
+                        conn._Conn.Close();
+                        break;
+
+                case '-':
+                        conn._Conn.Close();
+                        Action.DeleteStudentFromDB( conn._Conn);
+                      
+
+                        break;
+
+
+                case 'v':
+                      
+                        Action.GetStudentsFromDB(conn._Conn);
+                        conn._Conn.Close();
+                   break;
+
+                        default:
+
+                        Console.WriteLine("WrongChoice");
+
+                       break;  
+            }
+
+
+               
+
+            } while (true);
+
+
+          
+
+
         }
     }
 }

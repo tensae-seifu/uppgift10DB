@@ -38,17 +38,20 @@ namespace uppgift1
                 }
             }
         }
-        public static void UpdateStudentToDB(Student student, SqlConnection connection)
-        {
-            {
+       public static void UpdateStudentToDB(Student student, SqlConnection connection)
+    {
+            { 
+            
+            
             }
-        }
-        public static void DeleteStudentFromDB(/*Student student,*/ SqlConnection connection)
+    
+    }
+        public static void DeleteStudentFromDB( SqlConnection connection)
         {
             {
              
 
-                // Update data in the CUSTOMER table
+                // Delete data in the student table
                 Console.WriteLine("Deleteing data from Students table...");
 
                 int StudentId;
@@ -92,7 +95,7 @@ namespace uppgift1
                 connection.Close();
             }
         }
-        public static void GetStudentsFromDB(/*Student student,*/ SqlConnection connection)
+        public static void GetStudentsFromDB( SqlConnection connection)
         {
             {
 
