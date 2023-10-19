@@ -20,7 +20,7 @@ namespace uppgift1
 
      do {
 
-            Console.WriteLine($"\t\t Press {"V"} to view list of students - Press {"+"} to add student - Press {"-"} to delete student");
+            Console.WriteLine($"\t\t Press {"V"} to view list of students , Press {"+"} to add student , Press {"-"} to delete student");
             choice=Convert.ToChar( Console.ReadLine() );
                
                 
@@ -74,7 +74,7 @@ namespace uppgift1
 
                         default:
 
-                        Console.WriteLine("WrongChoice");
+                        Console.WriteLine("Wrong Choice");
 
                        break;  
             }
