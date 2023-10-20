@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using tesddb2;
 
 namespace uppgift1
@@ -38,27 +41,21 @@ namespace uppgift1
                 }
             }
         }
-       public static void UpdateStudentToDB(Student student, SqlConnection connection)
-    {
-            { 
-            
-            
+        public static void UpdateStudentToDB( SqlConnection connection)
+        {
+            {
+
+         
             }
-    
-    }
+        } 
         public static void DeleteStudentFromDB( SqlConnection connection)
         {
             {
-             
+
 
                 // Delete data in the student table
                 Console.WriteLine("Deleteing data from Students table...");
-
                 int StudentId;
-
-
-
-
                 Console.WriteLine("Enter Student ID to Delete: ");
                 StudentId = Convert.ToInt32(Console.ReadLine());
 
