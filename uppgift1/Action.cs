@@ -15,14 +15,14 @@ namespace uppgift1
     internal class Action
     {
 
-        public static void AddStudentToDB(Student student, SqlConnection connection)
+        public static void AddStudentToDB(Student student, SqlConnection conn)
         {
             {
                 // Insert data into the Students table
                 Console.WriteLine("\n\t\t\tInserting data into the Students table.");
                 Console.WriteLine("\t\t\t=========================================\n\n");
 
-                SqlCommand insertStudentCmd = new SqlCommand("INSERT INTO Students (StudentName, Age, Class, Gender) VALUES (@studentName, @studentAge, @studentClass, @studentGender)", connection);
+                SqlCommand insertStudentCmd = new SqlCommand("INSERT INTO Students (StudentName, Age, Class, Gender) VALUES (@studentName, @studentAge, @studentClass, @studentGender)", conn);
 
                 insertStudentCmd.Parameters.AddWithValue("@studentName", student.Name);
                 insertStudentCmd.Parameters.AddWithValue("@studentAge", student.Age);
@@ -92,13 +92,13 @@ namespace uppgift1
                 connection.Close();
             }
         }
-        public static void GetStudentsFromDB( SqlConnection connection)
+        public static void GetStudentsFromDB( SqlConnection conn)
         {
             {
 
                
                 // Pass the connection to the SqlCommand
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Students  ", connection);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Students  ", conn);
 
                 // SQL internal object that reads data from a table is called a SqlDataReader
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -125,7 +125,7 @@ namespace uppgift1
                 reader.Close();
 
                 //  close the connection when  done.
-                connection.Close();
+                conn.Close();
             }
         }
 
