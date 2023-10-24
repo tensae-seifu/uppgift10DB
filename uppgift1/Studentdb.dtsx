@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/24/2023 1:43:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PK86BAT"
+  DTS:CreatorName="DESKTOP-PK86BAT\Administrator"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{AF4E8F67-66BB-4974-B676-F30B9082411A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5107.6"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Studentdb"
+  DTS:VersionGUID="{B0B1E98B-A360-47D5-9EB9-38F31BC78138}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionAdoNET]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{34A472AD-6352-4930-B6C7-27895D0A1416}"
+      DTS:ObjectName="DestinationConnectionAdoNET">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Student;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionAdoNET]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C126BD7F-0C8E-4727-BD08-31C34A9CEF0A}"
+      DTS:ObjectName="SourceConnectionAdoNET">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Student;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{C4EFB1AE-79C4-4A07-A28A-452B1B58B6A8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - Students"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="Destination - Students"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Students"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - Students.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionAdoNET]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionAdoNET]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].Columns[StudentID]"
+                      cachedDataType="i4"
+                      cachedName="StudentID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[StudentID]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[StudentID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].Columns[StudentName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="StudentName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[StudentName]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[StudentName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].Columns[Age]"
+                      cachedDataType="i4"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].Columns[Class]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Class"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[Class]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Class]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Gender]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[StudentID]"
+                      dataType="i4"
+                      name="StudentID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[StudentName]"
+                      dataType="wstr"
+                      length="100"
+                      name="StudentName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[Age]"
+                      dataType="i4"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="100"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="100"
+                      name="Gender" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - Students.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Students.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - Students.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - Students.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Students"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Source - Students"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Students"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Students.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionAdoNET]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionAdoNET]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[StudentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[StudentID]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[StudentID]"
+                      name="StudentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[StudentName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[StudentName]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[StudentName]"
+                      name="StudentName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Age]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[Age]"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Age]"
+                      name="Age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Class]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[Class]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Class]"
+                      name="Class"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[Gender]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[StudentID]"
+                      dataType="i4"
+                      name="StudentID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[StudentName]"
+                      dataType="wstr"
+                      length="100"
+                      name="StudentName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[Age]"
+                      dataType="i4"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="100"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="100"
+                      name="Gender" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[StudentID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[StudentID]"
+                      name="StudentID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[StudentName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[StudentName]"
+                      name="StudentName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[Age]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[Age]"
+                      name="Age" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[Class]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[Class]"
+                      name="Class" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[ADO NET Source Output]"
+              endId="Package\Data Flow Task 1\Destination - Students.Inputs[Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task 1\Source - Students.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>
