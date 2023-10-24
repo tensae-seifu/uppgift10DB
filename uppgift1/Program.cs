@@ -63,8 +63,8 @@ namespace uppgift1
                 case '-':
                         conn._Conn.Close();
                         Action.DeleteStudentFromDB( conn._Conn);
-                      
 
+                       
                         break;
 
 
@@ -74,7 +74,15 @@ namespace uppgift1
                         conn._Conn.Close();
                    break;
 
-                        default:
+                    case 'u':
+                     
+
+                        
+                        Action.UpdateStudentToDB(conn._Conn);
+                        conn._Conn.Close();
+                        break;
+
+                    default:
 
                         Console.WriteLine("Wrong Choice");
 
