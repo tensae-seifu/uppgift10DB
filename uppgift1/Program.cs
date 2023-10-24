@@ -15,13 +15,15 @@ namespace uppgift1
             char choice;
           
 
-            Console.WriteLine($"\t\t WELCOME TO CHAS ACADEMY\n");
+            Console.WriteLine($"\t\t\t\t\t WELCOME TO CHAS ACADEMY");
+            Console.WriteLine($"\t\t\t\t\t=========================\n");
 
 
-     do {
+            do {
 
-            Console.WriteLine($"\t\t Press {"V"} to view list of students , Press {"+"} to add student , Press {"-"} to delete student");
-            choice=Convert.ToChar( Console.ReadLine() );
+                Console.WriteLine($"\t\t Press {"V"} to view list of students , Press {"+"} to add student , Press {"-"} to delete student");
+                Console.WriteLine($"\t\t =====================================================================================\n");
+                choice =Convert.ToChar( Console.ReadLine() );
                
                 
                 
